@@ -10,27 +10,20 @@ class Member:
 
     @classmethod
     def parse_list(cls, l: list[str]):
-        [firstName, lastName, mobileNumber, platform, email, studentID, department, degree] = l
+        [enroll_date, name, student_id, department, degree, email, mobile_number, elo, lichess_username,
+         chesscom_username, note] = l
 
-        platform = platform.lower().strip()
-        if "signal" in platform:
-            platform = "S "
-        elif "whatsapp" in platform:
-            platform = "W "
-        elif "telegram" in platform:
-            platform = "T "
-        else:
-            platform = "N "
+        note = f"{student_id} {department} {degree}"
 
-        note = f"{studentID} {department} {degree}"
+        name = "HUSAT " + name.strip().title()
 
-        name = "OYT23" + platform + firstName.strip() + " " + lastName.strip()
-
-        telno = mobileNumber.replace(" ", "")
+        telno = mobile_number.replace(" ", "")
         if telno.startswith('5'):
             telno = '+90' + telno
         elif telno.startswith('0'):
             telno = '+9' + telno
+        elif telno.startswith('9'):
+            telno = '+' + telno
 
         return cls(name, telno, email, note)
 
