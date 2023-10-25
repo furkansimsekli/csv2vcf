@@ -8,9 +8,9 @@ from member import Member
 
 
 def main() -> None:
-    # Input file must be a csv file formatted in the style produced by formie
+    # Input file must be a csv file formatted in the style produced by Google Forms
     path_input = sys.argv[1]
-    path_output = "2023-processed-first97.csv"
+    path_output = "clean.csv"
 
     if not path_input:
         print("usage: python3 converter.py <input csv file>")
@@ -22,6 +22,7 @@ def main() -> None:
     members: list[Member]
     with open(path_input, 'r') as file:
         reader = csv.reader(file)
+        next(reader)  # First row is for headers, therefore ignore it.
         members = [Member.parse_list(line) for line in reader]
 
     with open(path_output, 'w') as file:
