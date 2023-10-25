@@ -10,7 +10,7 @@ class Member:
 
     @classmethod
     def parse_list(cls, l: list[str]):
-        [firstName,lastName,mobileNumber,platform,email,studentID,department,degree] = l
+        [firstName, lastName, mobileNumber, platform, email, studentID, department, degree] = l
 
         platform = platform.lower().strip()
         if "signal" in platform:

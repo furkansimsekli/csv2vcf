@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
+import csv
 import os
 import sys
-import csv
-from member import Member
+
 from csv2vcf import convert_to_vcard
+from member import Member
 
 
 def main() -> None:
@@ -27,9 +28,8 @@ def main() -> None:
         for member in members:
             file.write(str(member))
 
-    convert_to_vcard(path_output, single_output=True, input_file_format={"name":1, "tel":2, "email":3, "note": 4})
+    convert_to_vcard(path_output, single_output=True, input_file_format={"name": 1, "tel": 2, "email": 3, "note": 4})
 
-    
 
 if __name__ == "__main__":
     main()
