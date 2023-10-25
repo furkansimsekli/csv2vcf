@@ -13,7 +13,7 @@ class Member:
         [enroll_date, name, student_id, department, degree, email, mobile_number, elo, lichess_username,
          chesscom_username, note, is_added_to_group] = l
 
-        if is_added_to_group == "" or is_added_to_group == "0":
+        if is_added_to_group == "1":
             return None
 
         note = f"{student_id} {department} {degree}"
