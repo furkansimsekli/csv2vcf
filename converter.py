@@ -20,12 +20,12 @@ def main() -> None:
         print(f"File {path_input} does not exist")
 
     members: list[Member]
-    with open(path_input, 'r') as file:
+    with open(path_input, "r") as file:
         reader = csv.reader(file)
         next(reader)  # First row is for headers, therefore ignore it.
         members = [Member.parse_list(line) for line in reader]
 
-    with open(path_output, 'w') as file:
+    with open(path_output, "w") as file:
         for member in members:
             if member:
                 file.write(str(member))
