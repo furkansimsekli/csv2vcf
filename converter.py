@@ -27,7 +27,8 @@ def main() -> None:
 
     with open(path_output, 'w') as file:
         for member in members:
-            file.write(str(member))
+            if member:
+                file.write(str(member))
 
     convert_to_vcard(path_output, single_output=True, input_file_format={"name": 1, "tel": 2, "email": 3, "note": 4})
 
