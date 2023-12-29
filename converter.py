@@ -2,6 +2,7 @@
 import csv
 import os
 import sys
+from datetime import date
 
 from csv2vcf import convert_to_vcard
 from member import Member
@@ -10,7 +11,7 @@ from member import Member
 def main() -> None:
     # Input file must be a csv file formatted in the style produced by Google Forms
     path_input = sys.argv[1]
-    path_output = "clean.csv"
+    path_output = f"{date.today()}.csv"
 
     if not path_input:
         print("usage: python3 converter.py <input csv file>")

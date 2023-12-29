@@ -3,13 +3,15 @@
     Github : https://github.com/mridah/csv2vcf
     Description : A small command line tool to convert CSV files to VCard files
 
+    2023.12.29  :   Renamed the output file, in case there will be single output
+    -furkansimsekli
 """
 
 import csv
 import json
 import os
 import sys
-
+from datetime import date
 
 def convert_to_vcard(input_file, single_output, input_file_format):
     FN = input_file_format['name'] - 1 if 'name' in input_file_format else None
@@ -26,7 +28,7 @@ def convert_to_vcard(input_file, single_output, input_file_format):
     if single_output:
         with open(input_file, 'r') as source_file:
             reader = csv.reader(source_file)
-            single_vcf = open('all_contacts.vcf', 'w')
+            single_vcf = open(f'{date.today()}.vcf', 'w')
             i = 0
             for row in reader:
                 FN_VAL = row[FN] if FN is not None else ''
